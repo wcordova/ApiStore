@@ -6,6 +6,7 @@ package umg.edu.gt.progra.ApiStore.controller;
 
 import java.util.List;
 import java.util.Optional;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,11 +27,14 @@ import umg.edu.gt.progra.ApiStore.service.ProductService;
 @RequestMapping("/products")
 public class ProductController {
     
+    private static final Logger logger = Logger.getLogger(ProductController.class);
+    
     @Autowired
     private ProductService productService;
     
     @GetMapping
     public List<Product> getAllProducts() {
+        logger.info("init find All");
         return productService.findAll();
     }
     
